@@ -45,6 +45,8 @@ jobs:
 
       - run:  bundle exec rspec 
       - run:  bundle exec cucumber
+      #run linters
+      - run: bundle exec rubocop
 
 
 
