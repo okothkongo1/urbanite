@@ -8,7 +8,7 @@ jobs:
           PGHOST: localhost
           PGUSER: urbanite
           RAILS_ENV: test
-      - image: postgres:lastest-alpine
+      - image: postgres:10.7-alpine
 
         environment:
           POSTGRES_USER: urbanite
