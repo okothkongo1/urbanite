@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'rubocop', '~> 0.39.0', require: false
+# gem 'rubocop', '~> 0.39.0', require: false
 # gem 'rubocop-rails', '~> 2.4', '>= 2.4.2'
 # gem 'rubocop-rspec'
 # gem 'rubocop-performance'
@@ -40,6 +40,8 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'factory_bot'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
 end
 
 group :development do
