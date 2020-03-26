@@ -47,6 +47,8 @@ jobs:
       - run:  bundle exec cucumber
       #run linters
       - run: bundle exec rubocop
+      - run: bundle exec rails_best_practices .
+
 
 
 
