@@ -6,10 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :password_confirmation
       t.string :first_name
       t.string :last_name
-
       t.timestamps
-
-    
     end
    add_index :users, :email, unique: true
   end
