@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
     it 'it should not allow user with wrong format email to be created' do
       user = FactoryBot.build(:user, email: 'email@g')  
       user.save 
-      expect(user.errors.messages[:email]).to eq ['Invalid email format']
+      expect(user.errors.messages[:email]).to eq ['format is invalid']
     end
     it 'it should not allow user with exist email to be created' do
       FactoryBot.create(:user)
@@ -102,7 +102,7 @@ RSpec.describe User, type: :model do
     it 'it should not allow user with weak password to be created' do      
       user = FactoryBot.build(:user, password: 'password1.', password_confirmation: 'password1.')  
       user.save      
-      expect(user.errors.messages[:password]).to eq ['Password too weak']
+      expect(user.errors.messages[:password]).to eq ['is too weak']
     end
     it 'it should not allow user with mistaching passwords to be created' do      
       user = FactoryBot.build(:user, password: 'Vertrong.23', password_confirmation: 'PAword12!')  
@@ -112,22 +112,22 @@ RSpec.describe User, type: :model do
     it 'it should not allow user with first name with numeric to be created' do      
       user = FactoryBot.build(:user, first_name: 'rubo1cop')  
       user.save         
-      expect(user.errors.messages[:first_name]).to eq ['Invalid name']
+      expect(user.errors.messages[:first_name]).to eq ['format is invalid']
     end
     it 'it should not allow user with first name of length greater than 30 to be created' do      
       user = FactoryBot.build(:user, first_name: 'rubo1cop' * 8)  
       user.save      
-      expect(user.errors.messages[:first_name]).to eq ['Invalid name']
+      expect(user.errors.messages[:first_name]).to eq ['format is invalid']
     end
     it 'it should not allow user with last name with numeric to be created' do      
       user = FactoryBot.build(:user, last_name: 'rubo1cop')  
       user.save         
-      expect(user.errors.messages[:last_name]).to eq ['Invalid name']
+      expect(user.errors.messages[:last_name]).to eq ['format is invalid']
     end
     it 'it should not allow user with last name of length greater than 30 to be created' do      
       user = FactoryBot.build(:user, last_name: 'rubo1cop' * 8)  
       user.save    
-      expect(user.errors.messages[:last_name]).to eq ['Invalid name']
+      expect(user.errors.messages[:last_name]).to eq ['format is invalid']
     end
   end
 
