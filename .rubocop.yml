@@ -16,6 +16,7 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - 'vendor/bundle/**/*'
+    - 'node_modules/**/*'
   TargetRubyVersion: 2.6.3
 
 
@@ -726,14 +727,14 @@ Metrics/CyclomaticComplexity:
   Enabled: true
 
 Layout/LineLength:
-  Max: 90
+  Max: 100
   # To make it possible to copy or click on URIs in the code, we allow lines
   # contaning a URI to be longer than Max.
   AllowURI: true
   URISchemes:
     - http
     - https
-  Description: 'Limit lines to 90 characters.'
+  Description: 'Limit lines to 100 characters.'
   StyleGuide: 'https://github.com/rubocop-hq/ruby-style-guide#80-character-limits'
   Enabled: true
 
