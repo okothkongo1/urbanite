@@ -39,7 +39,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'rails_best_practices'
