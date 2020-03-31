@@ -22,7 +22,7 @@ jobs:
         key: urbanite-{{ checksum "Gemfile.lock" }}
       # Bundle install dependencies
       - run:
-          name: install dependencies
+          name: install rails dependencies
           command: |
             sudo gem update --system
             sudo gem uninstall bundler
@@ -31,6 +31,21 @@ jobs:
             bundle install --path vendor/bundle
 
       - run: sudo apt install -y postgresql-client || true
+      # install node deps and webpack setup
+      - restore_cache:
+          keys:
+            - urbanite-yarn-{{ checksum "yarn.lock" }}
+            - urbanite-yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: urbanite-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
         # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
