@@ -19,8 +19,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:first_name) }
     it {is_expected.to validate_presence_of(:last_name)}  
-    it { is_expected.to validate_presence_of(:password) }
-    it { is_expected.to validate_presence_of(:password_confirmation) }
+    it { is_expected.to validate_presence_of(:password) }    
     it { is_expected.to validate_confirmation_of(:password) }
 
     
@@ -128,6 +127,12 @@ RSpec.describe User, type: :model do
       user = FactoryBot.build(:user, last_name: 'rubo1cop' * 8)  
       user.save    
       expect(user.errors.messages[:last_name]).to eq ['format is invalid']
+    end
+    it 'display one error at time' do      
+      user = FactoryBot.build(:user, first_name: '')  
+      user.save  
+      expect(user.errors.messages[:first_name]).to eq ["can't be blank"]   
+      expect(user.errors.messages[:first_name]).not_to eq ["can't be blank", 'format is invalid']
     end
   end
 
