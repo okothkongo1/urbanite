@@ -32,7 +32,7 @@ RSpec.describe 'Creating ', type: :feature do
     fill_in 'Password', with: 'Jane@doe1'
     fill_in 'Password Confirmation', with: 'Jane@doe1'
     click_on 'Create User'    
-    expect(page).to have_content('Email format is invalid')
+    expect(page).to have_content('Email is invalid')
   end
   scenario 'empty email input' do
     visit new_user_path

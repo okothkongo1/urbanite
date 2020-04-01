@@ -90,7 +90,7 @@ RSpec.describe User, type: :model do
     it 'it should not allow user with wrong format email to be created' do
       user = FactoryBot.build(:user, email: 'email@g')  
       user.save 
-      expect(user.errors.messages[:email]).to eq ['format is invalid']
+      expect(user.errors.messages[:email]).to eq ['is invalid']
     end
     it 'it should not allow user with exist email to be created' do
       FactoryBot.create(:user)
