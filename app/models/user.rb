@@ -9,4 +9,5 @@ class User < ApplicationRecord
             message: 'format is invalid',allow_blank: true }
   validates :password,format: { with: PASSWORD_REGEX,
             message: 'is too weak', allow_blank: true }
+  has_many :advertisements, dependent: :destroy
 end
