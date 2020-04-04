@@ -22,9 +22,11 @@ RSpec.describe Advertisement, type: :model do
     it { is_expected.to validate_numericality_of(:price) }
   end
   describe 'user association' do
+    
     it { is_expected.to belong_to(:user) }
   end
   describe '#advert creation' do
+    let(:length_error) {['is too long (maximum is 20 characters)']}
     it 'should create advert with valid attributes' do
       advert = FactoryBot.create(:advertisement)
       expect(advert).to be_valid
@@ -38,7 +40,7 @@ RSpec.describe Advertisement, type: :model do
     it 'it should not allow advert with long location to be created' do
       advertisement = FactoryBot.build(:advertisement, location: 'Kingston'*4)
       advertisement.save
-      expect(advertisement.errors.messages[:location]).to eq ['is too long (maximum is 20 characters)']
+      expect(advertisement.errors.messages[:location]).to eq length_error
     end
     it 'it should not allow advert without category to be created' do
       advertisement = FactoryBot.build(:advertisement, category: '')
@@ -48,7 +50,7 @@ RSpec.describe Advertisement, type: :model do
     it 'it should not allow advert with long category to be created' do
       advertisement = FactoryBot.build(:advertisement, category: 'Electronics'*4)
       advertisement.save
-      expect(advertisement.errors.messages[:category]).to eq ['is too long (maximum is 20 characters)']
+      expect(advertisement.errors.messages[:category]).to eq length_error
     end
     it 'it should not allow advert without advert_type to be created' do
       advertisement = FactoryBot.build(:advertisement, advert_type: '')
@@ -58,7 +60,7 @@ RSpec.describe Advertisement, type: :model do
     it 'it should not allow advert with long advert_type to be created' do
       advertisement = FactoryBot.build(:advertisement, advert_type: 'Computer'*4)
       advertisement.save
-      expect(advertisement.errors.messages[:advert_type]).to eq ['is too long (maximum is 20 characters)']
+      expect(advertisement.errors.messages[:advert_type]).to eq length_error
     end
     it 'it should not allow advert without price to be created' do
       advertisement = FactoryBot.build(:advertisement, price: '')

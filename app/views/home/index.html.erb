@@ -1,1 +1,6 @@
-<%= user_signed_in? ? "Welcome #{current_user.first_name}": "welcome"  %>
+<%if user_signed_in?%>
+<p>Welcome <%=current_user.first_name%></p>
+<%= link_to 'Create Advert', new_user_advertisement_path(current_user) %>
+<%else%>
+<p>Welcome</p>
+<%end%>
