@@ -87,6 +87,9 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
       expect(user.first_name).to eq 'Jane'
     end
+  describe 'user association' do
+    it { is_expected.to have_many(:advertisements) }
+  end
     it 'it should not allow user with wrong format email to be created' do
       user = FactoryBot.build(:user, email: 'email@g')  
       user.save 

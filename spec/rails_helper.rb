@@ -69,5 +69,8 @@ RSpec.configure do |config|
     end
   RSpec.configure do |config|
       config.include(Shoulda::Matchers::ActiveRecord, type: :model)
-  end 
+  end
+RSpec.configure do |config|
+  config.include Warden::Test::Helpers
+end
 end
