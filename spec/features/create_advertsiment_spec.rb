@@ -11,7 +11,7 @@ RSpec.describe 'Creating Advertisment', type: :feature do
     fill_in 'Model', with: 'Dell-XXX'
     fill_in 'Price', with: '10'
     click_on 'Create Advert'
-    expect(page).to have_content "Kisumu"
+    expect(page).to have_content 'Kisumu'
     expect(Advertisement.all.size).to eq 1
   end
   scenario 'blank location' do
