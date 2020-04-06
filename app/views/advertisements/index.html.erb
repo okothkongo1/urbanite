@@ -1,0 +1,27 @@
+<%if @advertisetments.present?%>
+<h1>Dear <%=current_user.first_name%> your adverts are</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Advert Category</th>
+      <th>Advert Type</th>
+      <th>Advert Model</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @advertisetments.each do |advertisement| %>
+    <tr>
+      <td><%= advertisement.category %></td>
+      <td><%= advertisement.advert_type %></td>
+      <td><%= advertisement.model %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%else%>
+<p> No adverts</p>
+<%end%>
+<%= link_to 'New User', new_advertisement_path %>

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  devise_for :users, :path => 'users'
-  resources :user do
-    resources :advertisements, only: [:show, :new, :create]
+  devise_for :users
+  # resources :user do
+  #   resources :advertisements, only: [:show, :new, :create,:index]
+  # end
+  authenticate :user do
+    resources :advertisements
   end
 
 end

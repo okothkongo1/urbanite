@@ -1,5 +1,10 @@
 class AdvertisementsController < ApplicationController
   before_action :authenticate_user!, :set_advert, only: [:show]
+    def index
+    @advertisetments = Advertisement.all.where(user_id: current_user.id)
+   
+    end
+
   def show
   end
   def new
