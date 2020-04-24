@@ -1,1 +1,21 @@
 @import 'materialize-css/dist/css/materialize.min.css';
+
+.alert{
+  color: red;
+}
+.notice{
+  color: green;
+}
+
+.notices{
+  padding-top: 50px;
+  padding-bottom: 25px;
+  font-size: 150%;
+}
+
+.brand-logo{
+  padding-left: -1px;
+}
+.menu-content{
+  padding-top: 20px;
+}
