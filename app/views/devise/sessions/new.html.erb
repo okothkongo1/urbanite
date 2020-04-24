@@ -5,15 +5,15 @@
         <h3>Login </h3>
       </div>
       <div class="card-content">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="row">
-          <%= f.email_field :email, placeholder: "Email"%>
+          <%= f.input :email, placeholder: "janedoe@example.com",  required: true%>
         </div>
         <div class="row">
-          <%= f.password_field :password, placeholder: "password",autofocus: true%>
+          <%= f.input :password, placeholder: "********",  required: true%>
         </div>
         <div class="row">
-          <%=f.submit "Sign In", class: "btn-large waves-effect waves-dark ", id: "signin_button"%>
+          <%=f.button :submit, "Log in", class: " waves-effect waves-dark btn-large "%>
         </div>
         <% if devise_mapping.rememberable? %>
         <div>
@@ -23,9 +23,9 @@
         <% end %>
         <%end%>
         <div class="row">
-        <%= render "devise/shared/links" %>
+          <%= render "devise/shared/links" %>
         </div>
-      </>
+        </>
+      </div>
     </div>
   </div>
-</div>
