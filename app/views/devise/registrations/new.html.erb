@@ -1,31 +1,38 @@
-<div class="bg-grey-lighter min-h-screen flex flex-col">
-  <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-    <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-      <h2 class="mb-8 text-3xl text-center">Sign up</h2>
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
-      <%= f.text_field :first_name, placeholder: "First Name", class: "field block border border-grey-light w-full p-3 rounded mb-4",
-          autofocus: true, autocomplete: "email"%>
-      <%= f.text_field :last_name, placeholder: "Last Name", class: "field block border border-grey-light w-full p-3 rounded mb-4",
-          autofocus: true%>
-      <%= f.email_field :email, placeholder: "Email", class: "field block border border-grey-light w-full p-3 rounded mb-4",
-          autofocus: true%>
-      <div class=" field">
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, placeholder: "Password", class: "field block border border-grey-light w-full p-3 rounded mb-4",
-            autofocus: true%>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card">
+      <div class="card-action teal lighten-1 white-text">
+        <h3>Create Account</h3>
+      </div>
+      <div class="card-content">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="row">
+          <div class="col s6">
+            <%= f.text_field :first_name, placeholder: "First Name"%>
+          </div>
+          <div class="col s6">
+            <%= f.text_field :last_name, placeholder: "Last Name"%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <%= f.email_field :email, placeholder: "Email"%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <%= f.password_field :password, placeholder: "Password"%>
+          </div>
+          <div class="col s6">
+            <%= f.password_field :password_confirmation, placeholder: "Confirm Password"%>
+          </div>
+        </div>
+        <%=f.submit "Sign Up", class: " waves-effect waves-dark btn-large "%>
+        <%end%>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
-    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "field block border border-grey-light w-full p-3 rounded mb-4",
-          autofocus: true %>
-    <div class="actions">
-      <%= f.submit "Sign up", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" %>
-    </div>
-    <% end %>
-    <%= render "devise/shared/links" %>
   </div>
 </div>
 </div>

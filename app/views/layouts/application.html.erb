@@ -5,17 +5,21 @@
   <title>Urbanite</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= render "shared/menu" %>
-  <%= yield %>
-</body>
+
+  <body>
+    <div>
+      <%= render "shared/menu" %>
+      <%= render "shared/notices" %>
+      <%= yield %>
+    </div>
+  </body>
 
 </html>
