@@ -36,7 +36,7 @@
             <li class="menu-content"><%=link_to "Home" , root_path%></li>
             <li class="menu-content"><a href="#">About Us</a></li>
             <li class="menu-content"><a href="#">Contact Us</a></li>
-            <li class="dropdown-trigger menu-content" href="#!" data-target="account-menu-dropdown"><%= user_signed_in? ? "Hi, #{current_user.first_name}": "Account"%></li>
+            <li id="current_user_nav" class="dropdown-trigger menu-content" href="#!" data-target="account-menu-dropdown"><%= user_signed_in? ? "Hi, #{current_user.first_name}": "Account"%></li>
           </ul>
         </div>
       </div>

@@ -22,7 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'simple_form'
-
+gem 'devise-security'
+gem 'valid_email2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

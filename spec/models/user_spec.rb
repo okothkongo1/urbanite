@@ -101,10 +101,11 @@ RSpec.describe User, type: :model do
       user.save     
       expect(user.errors.messages[:email]).to eq ['has already been taken']
     end
-    it 'it should not allow user with weak password to be created' do      
+    it 'it should not allow user with weak password to be created' do
+      pass_error = 'Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit'
       user = FactoryBot.build(:user, password: 'password1.', password_confirmation: 'password1.')  
       user.save      
-      expect(user.errors.messages[:password]).to eq ['is too weak']
+      expect(user.errors.messages[:password]).to eq [pass_error]
     end
     it 'it should not allow user with mistaching passwords to be created' do      
       user = FactoryBot.build(:user, password: 'Vertrong.23', password_confirmation: 'PAword12!')  
