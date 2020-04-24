@@ -1,20 +1,46 @@
-<%= form_with scope: :advertisement, url: advertisements_path, local: true do |form| %>
-<% if @advertisement.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@advertisement.errors.count, "error") %> prohibited this advertisement from being saved:</h2>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card">
+      <div class="card-action teal lighten-1 white-text">
+        <h4>Create an Advert</h4>
+      </div>
+      <div class="card-content">
+        <%= simple_form_for @advertisement, url:  advertisements_path do |f| %>
+        <%=f.hidden_field :user_id,value: current_user.id %>
+        <%= f.error_notification %>
+        <div class="row">
+          <div class="col s6">
+            <%= f.input :category, placeholder: "Electronics", required: true%>
 
-  <ul>
-    <% @advertisement.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+          </div>
+          <div class="col s6">
+            <%= f.input :advert_type, placeholder: "Phone" , required: true%>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <%= f.input :model, placeholder: "Samsung GalaxyS5"%>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <%= f.input :price, placeholder: "20000", required: true%>
+          </div>
+          <div class="col s6">
+            <%= f.input :location, placeholder: "Nairobi", required: true%>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <%=f.button :submit, "Post Advert", class: " waves-effect waves-dark btn-large "%>
+          </div>
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
-<%=form.hidden_field :user_id,value: current_user.id %>
-<%= form.text_field :category, placeholder: "Category", class: "field block border border-grey-light w-full p-3 rounded mb-4" %>
-<%= form.text_field :advert_type, placeholder: "Advert type", class: "field block border border-grey-light w-full p-3 rounded mb-4" %>
-<%= form.text_field :model, placeholder: "Model", class: "field block border border-grey-light w-full p-3 rounded mb-4" %>
-<%= form.text_field :price, placeholder: "Price", class: "field block border border-grey-light w-full p-3 rounded mb-4" %>
-<%= form.text_field :location, placeholder: "Location", class: "field block border border-grey-light w-full p-3 rounded mb-4" %>
-<%= form.submit 'Create Advert', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" %>
-<% end %>
+</div>
