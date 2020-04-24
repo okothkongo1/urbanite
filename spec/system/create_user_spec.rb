@@ -86,13 +86,14 @@ RSpec.describe 'Creating ', type: :feature do
   end
   scenario 'weak password input' do
     visit new_user_registration_path 
+    password_error = 'Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit'
     fill_in 'user_first_name', with: 'Jane'
     fill_in 'user_last_name', with: 'Jane'
     fill_in 'user_email', with: 'je@j'
     fill_in 'user_password', with: 'rrrrrrrrrrrrrrrrr'
     fill_in 'user_password_confirmation', with: 'Jane@doe1'
     click_on 'Sign up'  
-    expect(page).to have_content('Complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character')  
+    expect(page).to have_content password_error  
   end
   scenario 'blank password input' do
     visit new_user_registration_path 

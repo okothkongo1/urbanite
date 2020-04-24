@@ -5,16 +5,16 @@ en:
       equal_to_current_password: 'must be different than the current password.'
       password_complexity:
         digit:
-          one: "Complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character"
+          one: "Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit"
           other: must contain at least %{count} numerals
         lower:
-          one: "Complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character"
+          one: "Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit"
           other: must contain at least %{count} lower-case letters
         symbol:
-          one: "Complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character"
+          one: "Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit"
           other: must contain at least %{count} puncutation marks or symbols
         upper:
-          one: "Complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character"
+          one: "Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit"
           other: must contain at least %{count} upper-case letters
   devise:
     invalid_captcha: 'The captcha input was invalid.'

@@ -36,4 +36,4 @@ en:
         user:
           attributes:
             password:            
-              too_short: "Complexity requirement not met. Length should be atleast 8 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character"
+              too_short: "Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit"

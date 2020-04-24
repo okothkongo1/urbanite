@@ -45,7 +45,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'rails_best_practices'
-  gem 'capybara' 
+  gem 'capybara'
   # This gem helps Capybara interact with the web browser.
   gem 'webdrivers'
 end
