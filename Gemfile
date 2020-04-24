@@ -22,7 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'simple_form'
-
+gem 'devise-security'
+gem 'valid_email2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -44,7 +45,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'rails_best_practices'
-  gem 'capybara'
+  gem 'capybara' 
   # This gem helps Capybara interact with the web browser.
   gem 'webdrivers'
 end

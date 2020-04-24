@@ -93,4 +93,10 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+config.before(:each) do
+  allow_any_instance_of(ValidEmail2::Address).to receive(:valid_mx?).and_return(true)
+end
+config.before(:each) do
+  allow_any_instance_of(ValidEmail2::Address).to receive(:mx_server_is_in?).and_return(false)
+end
 end
