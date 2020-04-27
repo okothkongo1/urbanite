@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
   end
   describe '#user attributes validation' do
     user_attributes = {first_name: 'Rein', last_name: 'dear', email: 'rein@dear.com',
-     password: 'strongBUt@2', password_confirmation: 'strongBUt@2'}
+     password: 'strongBUt@2', password_confirmation: 'strongBUt@2', confirmed_at: Time.now}
     subject { User.create(user_attributes)}  
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }    
     it { is_expected.to validate_presence_of(:email) }
@@ -94,6 +94,10 @@ RSpec.describe User, type: :model do
       user = FactoryBot.build(:user, email: 'email@g')  
       user.save 
       expect(user.errors.messages[:email]).to eq ['is invalid']
+    end
+    it 'sends a confirmation email' do
+      user = FactoryBot.build :user, confirmed_at: ""
+      expect { user.save }.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
     it 'it should not allow user with exist email to be created' do
       FactoryBot.create(:user)

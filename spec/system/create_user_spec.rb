@@ -9,9 +9,8 @@ RSpec.describe 'Creating ', type: :feature do
     fill_in 'user_email', with: 'janedoe@yahoo.com'
     fill_in 'user_password', with: 'FalseDate2!'
     fill_in 'user_password_confirmation', with: 'FalseDate2!'
-    click_on 'Sign up'  
-    visit root_path
-    expect(page).to have_selector('#current_user_nav', text: 'Jane')
+    click_on 'Sign up'
+    expect(page).to have_selector('.notice', text: 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
   end
   scenario 'empty email input' do
     visit new_user_registration_path 
