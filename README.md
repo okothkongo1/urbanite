@@ -1,5 +1,7 @@
 
 
+[![Urbanite](https://circleci.com/gh/okothkongo1/urbanite.svg?style=svg)](https://circleci.com/gh/okothkongo1/urbanite)
+
 
 ## To contribute
 Fork the this repo then clone from forked repo from your github account 
