@@ -3,6 +3,7 @@ require 'rails_helper'
  
 RSpec.describe 'Creating ', type: :feature do
   scenario 'valid inputs' do
+ 
     visit new_user_registration_path 
     fill_in 'user_first_name', with: 'Jane'
     fill_in 'user_last_name', with: 'Jane'
@@ -10,7 +11,9 @@ RSpec.describe 'Creating ', type: :feature do
     fill_in 'user_password', with: 'FalseDate2!'
     fill_in 'user_password_confirmation', with: 'FalseDate2!'
     click_on 'Sign up'
-    expect(page).to have_selector('.notice', text: 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
+    expect(page).to have_selector('.notice', text: 'A message with a confirmation link has'\
+                                            ' been sent to your email address.'\
+                                            ' Please follow the link to activate your account.')
   end
   scenario 'empty email input' do
     visit new_user_registration_path 
