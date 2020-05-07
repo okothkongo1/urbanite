@@ -12,9 +12,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column :password_confirmation }
   end
   describe '#user attributes validation' do
-    user_attributes = {first_name: 'Rein', last_name: 'dear', email: 'rein@dear.com',
-     password: 'strongBUt@2', password_confirmation: 'strongBUt@2', confirmed_at: Time.current}
-    subject { User.create(user_attributes)}
+    subject { create(:user)}
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:first_name) }
@@ -81,61 +79,63 @@ RSpec.describe User, type: :model do
 
   describe '#user creation' do
     it 'should create user with valid attributes' do
-      user = FactoryBot.create(:user)
-      expect(user).to be_valid
+      user = create(:user)
       expect(user.first_name).to eq 'Jane'
     end
   describe 'user association' do
     it { is_expected.to have_many(:advertisements) }
   end
+    it ' expects user  with wrong format email to be invalid' do
+      expect(build(:user, email: 'email@g')).to_not be_valid
+    end
     it 'it should not allow user with wrong format email to be created' do
-      user = FactoryBot.build(:user, email: 'email@g')  
+      user = build(:user, email: 'email@g')  
       user.save 
-      expect(user.errors.messages[:email]).to eq ['is invalid']
+      expect(user.errors.messages[:email]).to_not be_blank
     end
     it 'sends a confirmation email' do
-      user = FactoryBot.build :user, confirmed_at: ''
+      user = build :user, confirmed_at: ''
       expect { user.save }.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
     it 'it should not allow user with exist email to be created' do
-      FactoryBot.create(:user)
-      user = FactoryBot.build(:user, email: 'JANEDOE@example.com')  
+      create(:user, email: 'janedoe@example.com')
+      user = build(:user, email: 'JANEDOE@example.com')  
       user.save     
       expect(user.errors.messages[:email]).to eq ['has already been taken']
     end
     it 'it should not allow user with weak password to be created' do
       pass_error = 'Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit'
-      user = FactoryBot.build(:user, password: 'password1.', password_confirmation: 'password1.')  
+      user = build(:user, password: 'password1.', password_confirmation: 'password1.')  
       user.save      
       expect(user.errors.messages[:password]).to eq [pass_error]
     end
     it 'it should not allow user with mistaching passwords to be created' do      
-      user = FactoryBot.build(:user, password: 'Vertrong.23', password_confirmation: 'PAword12!')  
+      user = build(:user, password: 'Vertrong.23', password_confirmation: 'PAword12!')  
       user.save     
       expect(user.errors.messages[:password_confirmation]).to eq ["doesn't match Password"]
     end
     it 'it should not allow user with first name with numeric to be created' do      
-      user = FactoryBot.build(:user, first_name: 'rubo1cop')  
+      user = build(:user, first_name: 'rubo1cop')  
       user.save         
       expect(user.errors.messages[:first_name]).to eq ['format is invalid']
     end
     it 'it should not allow user with first name of length greater than 30 to be created' do      
-      user = FactoryBot.build(:user, first_name: 'rubo1cop' * 8)  
+      user = build(:user, first_name: 'rubo1cop' * 8)  
       user.save      
       expect(user.errors.messages[:first_name]).to eq ['format is invalid']
     end
     it 'it should not allow user with last name with numeric to be created' do      
-      user = FactoryBot.build(:user, last_name: 'rubo1cop')  
+      user = build(:user, last_name: 'rubo1cop')  
       user.save         
       expect(user.errors.messages[:last_name]).to eq ['format is invalid']
     end
     it 'it should not allow user with last name of length greater than 30 to be created' do      
-      user = FactoryBot.build(:user, last_name: 'rubo1cop' * 8)  
+      user = build(:user, last_name: 'rubo1cop' * 8)  
       user.save    
       expect(user.errors.messages[:last_name]).to eq ['format is invalid']
     end
     it 'display one error at time' do      
-      user = FactoryBot.build(:user, first_name: '')  
+      user = build(:user, first_name: '')  
       user.save  
       expect(user.errors.messages[:first_name]).to eq ["can't be blank"]   
       expect(user.errors.messages[:first_name]).not_to eq ["can't be blank", 'format is invalid']
