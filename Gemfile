@@ -48,6 +48,7 @@ group :development, :test do
   gem 'capybara'
   # This gem helps Capybara interact with the web browser.
   gem 'webdrivers'
+  gem 'simplecov', require: false
 end
 
 group :development do
