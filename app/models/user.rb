@@ -3,7 +3,7 @@ class User < ApplicationRecord
   devise :secure_validatable,  email_validation: false
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+         :recoverable, :rememberable,:confirmable
   validates :first_name, presence: true, format: { with: NAME_REGEX,
             message: 'format is invalid', allow_blank: true }
   validates :last_name, presence: true, format: { with: NAME_REGEX,
