@@ -17,3 +17,10 @@ User.destroy_all
       confirmed_at: Time.current
   )
 end
+
+Advertisement.destroy_all
+user_ids = User.all.map{|u| u.id} * 4
+
+user_ids.map{ |user_id| Advertisement.create user_id: user_id, category: 'Electronic',  advert_type: 'Phone' ,
+                                              price: Faker::Number.between(from: 1, to: 1000000),
+                                              location: Faker::Address.city, model: Faker::Appliance.brand }
