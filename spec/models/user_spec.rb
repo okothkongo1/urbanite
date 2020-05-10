@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column :updated_at }
     it { is_expected.to have_db_column :password }
     it { is_expected.to have_db_column :password_confirmation }
+     it { is_expected.to have_db_column :role_id }
   end
   describe '#user attributes validation' do
     subject { create(:user)}
@@ -139,6 +140,12 @@ RSpec.describe User, type: :model do
       user.save  
       expect(user.errors.messages[:first_name]).to eq ["can't be blank"]   
       expect(user.errors.messages[:first_name]).not_to eq ["can't be blank", 'format is invalid']
+    end
+    it 'creates user with default role as normal' do      
+      user = create(:user)  
+     
+      expect(user.role.name).to eq 'normal'  
+   
     end
   end
 

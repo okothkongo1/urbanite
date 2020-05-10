@@ -1,6 +1,7 @@
 
 FactoryBot.define do
   factory :user do
+    role
     first_name { 'Jane' }
     last_name { 'Doe' }
     sequence(:email) { |n| "janedoe@example#{n}.com" }
