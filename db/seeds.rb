@@ -21,6 +21,20 @@ end
 Advertisement.destroy_all
 user_ids = User.all.map{|u| u.id} * 4
 
-user_ids.map{ |user_id| Advertisement.create user_id: user_id, category: 'Electronic',  advert_type: 'Phone' ,
-                                              price: Faker::Number.between(from: 1, to: 1000000),
-                                              location: Faker::Address.city, model: Faker::Appliance.brand }
+user_ids.each do |user_id|
+  Advertisement.create user_id: user_id, category: 'Electronic',  advert_type: 'Phone' ,
+                                          price: Faker::Number.between(from: 1, to: 1000000),
+                                          location: Faker::Address.city, model: Faker::Appliance.brand 
+
+
+
+['normal', 'admin'].each do |role|
+  Role.find_or_create_by({name: role})
+end
+
+User.create(
+  email: 'admin@urbanite.org' 
+  password: 'SuperSecret@123'
+  password_confirmation: 'SuperSecret@123'
+  
+)
