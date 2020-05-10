@@ -49,6 +49,7 @@ User.create(
   last_name: 'Doe',
   email: 'admin@urbanite.org',
   password: 'SuperSecret@123',
+  role_id: Role.find_by(name: 'admin').id,
   password_confirmation: 'SuperSecret@123',
    confirmed_at: Time.current
 )
