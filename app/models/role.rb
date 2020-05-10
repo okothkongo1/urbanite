@@ -1,4 +1,4 @@
 class Role < ApplicationRecord
-  has_many :users
-  validates :name, presence: true, uniqueness: true
+  has_many :users, dependent: :nullify
+  validates :name, presence: true
 end
