@@ -38,18 +38,12 @@ puts "creating advert number #{number+=1}"
 end
 
 
-
-['normal', 'admin'].each do |role|
-  Role.find_or_create_by({name: role})
-end
-puts 'roles have been created'
-
 User.create(
   first_name: 'Jane',
   last_name: 'Doe',
   email: 'admin@urbanite.org',
   password: 'SuperSecret@123',
-  role_id: Role.find_by(name: 'admin').id,
+  role: :admin,
   password_confirmation: 'SuperSecret@123',
    confirmed_at: Time.current
 )

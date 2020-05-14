@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column :updated_at }
     it { is_expected.to have_db_column :password }
     it { is_expected.to have_db_column :password_confirmation }
-     it { is_expected.to have_db_column :role_id }
+    it { is_expected.to have_db_column :role}
   end
   describe '#user attributes validation' do
     subject { create(:user)}
@@ -79,9 +79,8 @@ RSpec.describe User, type: :model do
   end
 
   describe '#user creation' do
-    it 'should create user with valid attributes' do
-      user = create(:user)
-      expect(user.first_name).to eq 'Jane'
+    it 'creates normal  user with valid attributes' do
+      expect(create(:user).user?).to be_truthy
     end
   describe 'user association' do
     it { is_expected.to have_many(:advertisements) }
@@ -142,10 +141,7 @@ RSpec.describe User, type: :model do
       expect(user.errors.messages[:first_name]).not_to eq ["can't be blank", 'format is invalid']
     end
     it 'creates user with default role as normal' do      
-      user = create(:user)  
-     
-      expect(user.role.name).to eq 'normal'  
-   
+      expect(create(:admin).admin?).to be_truthy
     end
   end
 
