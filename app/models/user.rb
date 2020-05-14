@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :role
-  before_validation :set_default_role
+   enum role: {user: 0, admin: 1}
+  after_initialize :set_default_role, if: :new_record?
   NAME_REGEX = /(\A\D{1,30}\Z)/
   devise :secure_validatable,  email_validation: false
 
@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   private
   def set_default_role
-      self.role  ||= Role.find_by(name: 'normal')
+    self.role ||= :user
   end
 
 end

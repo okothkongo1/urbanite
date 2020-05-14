@@ -7,7 +7,7 @@ module UsersHelper
   private
   def admin?
     if current_user
-    current_user.role.name == 'admin'
+    current_user.admin?
     else
       false
     end

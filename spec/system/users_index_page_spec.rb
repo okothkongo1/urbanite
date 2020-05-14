@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User Index Page', type: :feature do
   let(:user){create(:user)}
- 
+  let(:admin) {create(:admin)}
   scenario 'user not logged in ' do
     visit users_path
     expect(current_path).to eq  root_path
@@ -13,8 +13,8 @@ RSpec.describe 'User Index Page', type: :feature do
     expect(current_path).to eq  root_path 
   end
   scenario 'user logged as admin' do
-    user.role.name = 'admin'
-    login_as user
+   
+    login_as admin
     visit users_path
     expect(current_path).to eq  users_path 
   end

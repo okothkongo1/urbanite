@@ -3,7 +3,6 @@ require 'rails_helper'
  
 RSpec.describe 'Creating ', type: :feature  do 
   before(:each) do
-    create(:role)
     visit new_user_registration_path
   end
   scenario 'valid inputs' do 
