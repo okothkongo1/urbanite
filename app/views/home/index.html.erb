@@ -1,0 +1,28 @@
+<h5 class="center-align">Available Adverts</h5>
+<div>
+  <table class="centered striped responsive-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Type</th>
+        <th>Model</th>
+        <th>price</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <tbody>
+      <%@advertisements.each do |advertisement| %>
+      <tr>
+        <td><%= advertisement.category %></td>
+        <td><%= advertisement.advert_type %></td>
+        <td><%= advertisement.model %></td>
+        <td><%= advertisement.price %></td>
+        <td><%= advertisement.location %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </tbody>
+  </table>
+</div>
