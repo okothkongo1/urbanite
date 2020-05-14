@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :advertisements
   end
-
+  resources :users, only: %i[index]
 end

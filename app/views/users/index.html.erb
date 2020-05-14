@@ -1,0 +1,24 @@
+<h5 class="center-align">ALL USERS</h5>
+<div>
+  <table class="centered striped responsive-table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </tbody>
+  </table>
+</div>
