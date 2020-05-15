@@ -24,6 +24,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'devise-security'
 gem 'valid_email2'
+gem "administrate"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
