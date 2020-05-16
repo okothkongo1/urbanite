@@ -58,7 +58,6 @@ jobs:
       - run: bundle exec rake db:setup 
       #run linters
       - run: bundle exec rubocop
-      - run: bundle exec rails_best_practices .     
       #run tests
       - run:  bundle exec rspec 
       - store_artifacts:
