@@ -25,13 +25,20 @@ end
 
 Advertisement.destroy_all
 puts 'all adverts deleted'
-user_ids = User.all.map{|u| u.id} * 4
+user_ids = User.all.map{|u| u.id} * 2
+
 
  number = 0
 user_ids.each do |user_id|
-  Advertisement.create user_id: user_id, category: 'Electronic',  advert_type: 'Phone' ,
+   advertisement = Advertisement.new(user_id: user_id, category: 'Electronic',  advert_type: 'Phone' ,
                                           price: Faker::Number.between(from: 1, to: 1000000),
-                                          location: Faker::Address.city, model: Faker::Appliance.brand
+                                          location: Faker::Address.city, model: Faker::Appliance.brand)
+  3.times do
+    advertisement.images.attach(io: File.open(Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg')), filename: 'advert.jpeg')
+  end
+ 
+  advertisement.save
+
 
 
 puts "creating advert number #{number+=1}"
