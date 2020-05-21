@@ -9,8 +9,6 @@ class Advertisement < ApplicationRecord
   validates :images, attached: true, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg'],
              message: 'invalid image type', allow_blank: true },
              limit: { min: 3, max: 5, allow_blank: true,
-             message: 'upload atleast 3 and at most 5 images' },
-             dimension: { width: { min: 800 },
-             height: { min: 800 }, message: 'upload images of higher quality',  allow_blank: true }
+             message: 'upload atleast 3 and at most 5 images' }
 
 end
