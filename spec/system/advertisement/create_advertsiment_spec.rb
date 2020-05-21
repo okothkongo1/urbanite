@@ -12,6 +12,10 @@ RSpec.describe 'Creating Advertisment', type: :feature do
     fill_in 'advertisement_advert_type', with: 'Computer'
     fill_in 'advertisement_model', with: 'Dell-XXX'
     fill_in 'advertisement_price', with: '10'
+    attach_file 'advertisement_images',
+                [Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg'),
+                 Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg'),
+                 Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg')]
     click_on 'Post Advert'
     expect(page).to have_content 'Kisumu'
   end
@@ -60,4 +64,30 @@ RSpec.describe 'Creating Advertisment', type: :feature do
     click_on 'Post Advert'
     expect(page).to have_selector('.advertisement_price', text: 'is not a number')
   end
+  scenario 'user upload less than three images' do
+    attach_file 'advertisement_images',
+                Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg')
+    click_on 'Post Advert'
+    expect(page).to have_selector('.advertisement_images',
+                                  text: 'upload atleast 3 and at most 5 images')
+  end
+  scenario 'user upload less than three images' do
+    attach_file 'advertisement_images',
+              [Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg'),
+              Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg'),
+              Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg'),
+              Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg'),
+              Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg'),
+              Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg') ]
+    click_on 'Post Advert'
+    expect(page).to have_selector('.advertisement_images',
+                                  text: 'upload atleast 3 and at most 5 images')
+  end
+  scenario 'user uploads image with invalid format' do
+    attach_file 'advertisement_images',
+                Rails.root.join('spec/support/assets/advertisements/dummy.pdf')
+    click_on 'Post Advert'
+    expect(page).to have_selector('.advertisement_images', text: 'invalid image type')
+  end
+
 end

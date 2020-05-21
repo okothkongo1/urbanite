@@ -73,4 +73,7 @@ RSpec.configure do |config|
 RSpec.configure do |config|
   config.include Warden::Test::Helpers
 end
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
+end
 end
