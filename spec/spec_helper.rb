@@ -15,6 +15,7 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'active_storage_validations/matchers'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -100,5 +101,8 @@ config.before(:each) do
 end
 config.before(:each) do
   allow_any_instance_of(ValidEmail2::Address).to receive(:mx_server_is_in?).and_return(false)
+end
+RSpec.configure do |config|
+  config.include ActiveStorageValidations::Matchers
 end
 end

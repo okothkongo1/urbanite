@@ -45,7 +45,8 @@ class AdvertisementsController < ApplicationController
   private
     def advertisement_params
       params.require(:advertisement).permit(:category, :advert_type, :model,
-                                            :price, :location, :user_id)
+                                            :price, :location, :user_id,
+                                            images: [])
     end
     def set_advert
       @advertisement = Advertisement.find(params[:id])

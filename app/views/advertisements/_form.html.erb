@@ -23,6 +23,11 @@
 </div>
 <div class="row">
   <div class="col s12">
+    <%= f.input :images, as: :file, input_html: {multiple: true} %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
     <%=f.button :submit, "Post Advert", class: " waves-effect waves-dark btn-large "%>
   </div>
 </div>

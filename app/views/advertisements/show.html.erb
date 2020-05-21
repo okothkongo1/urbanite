@@ -1,6 +1,5 @@
-
-  <strong>Category:</strong>
-  <%= @advertisement.category %>
+<strong>Category:</strong>
+<%= @advertisement.category %>
 </p>
 
 <p>
@@ -21,4 +20,10 @@
 <p>
   <strong>Price:</strong>
   <%= @advertisement.price %>
+</p>
+<p>
+<%@advertisement.images.each do|image|%>
+
+  <%= image_tag(image)%>
+  <%end%>
 </p>
