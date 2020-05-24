@@ -109,4 +109,15 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.action_mailer.default_url_options = { :host => 'https://ubarnite.herokuapp.com'}
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['sendgrid_user_name'],
+    :password => ENV['sendgrid_password']
+    :domain => 'https://ubarnite.herokuapp.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 25,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end

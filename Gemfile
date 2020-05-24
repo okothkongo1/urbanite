@@ -7,7 +7,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -27,6 +27,7 @@ gem 'valid_email2'
 gem 'administrate'
 gem 'active_storage_validations'
 gem 'mini_magick'
+gem 'figaro'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
