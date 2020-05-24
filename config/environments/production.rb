@@ -113,7 +113,7 @@ Rails.application.configure do
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['sendgrid_user_name'],
-    :password => ENV['sendgrid_password']
+    :password => ENV['sendgrid_password'],
     :domain => 'https://ubarnite.herokuapp.com',
     :address => 'smtp.sendgrid.net',
     :port => 25,
