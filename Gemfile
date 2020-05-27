@@ -41,7 +41,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 11.1', '>= 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry', '~> 0.13.1'
+  gem 'pry-byebug', '~> 3.9'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'shoulda-matchers', '~> 4.3'
   gem 'cucumber-rails', require: false
