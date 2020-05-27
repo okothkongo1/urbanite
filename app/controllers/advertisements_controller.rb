@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AdvertisementsController < ApplicationController
   before_action :authenticate_user!, :set_advert, only: [:show, :destroy, :update, :edit]
   def index

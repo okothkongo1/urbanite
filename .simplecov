@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 SimpleCov.start do
   add_filter ['app/channels', 'app/jobs', 'app/mailers', 'spec/', 'app/dashboard', 'app/controller/admin']
   add_group 'Models', 'app/models'
