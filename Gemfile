@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -46,9 +47,10 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'rubocop', require: false
-  gem 'rubocop-rails'
-  gem 'rails_best_practices'
+  gem 'rubocop', '~> 0.84.0', require: false
+  gem 'rubocop-rails', '~> 2.5', '>= 2.5.2', require: false
+  gem 'rubocop-rspec', '~> 1.39', require: false
+  gem 'rubocop-performance', '~> 1.6', require: false
   gem 'capybara'
   # This gem helps Capybara interact with the web browser.
   gem 'webdrivers'

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 FactoryBot.define do
   factory :user do
@@ -8,8 +9,8 @@ FactoryBot.define do
     password_confirmation{ 'Verystrong.123' }
     confirmed_at {Time.zone.now}
 
-  factory :admin, parent: :user do
-    role {:admin}
-  end
+    factory :admin, parent: :user do
+      role {:admin}
+    end
   end
 end

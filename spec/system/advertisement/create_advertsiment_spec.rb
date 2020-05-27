@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe 'Creating Advertisment', type: :feature do
- let(:user){create(:user)}
+  let(:user){create(:user)}
   before(:each) do
-   login_as user
-   visit new_advertisement_path
+    login_as user
+    visit new_advertisement_path
   end
   scenario 'successful advert creation' do
     fill_in 'advertisement_location', with: 'Kisumu'

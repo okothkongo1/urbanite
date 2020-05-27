@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -56,7 +57,7 @@ RSpec.describe User, type: :model do
       end
     end
     context 'should not  be invalid first name' do
-      first_name = ['Jane1','1jane',
+      first_name = ['Jane1', '1jane',
                    'JANE' * 10, "Ko2ng'o"]
       first_name.each do |first_name|
         it { is_expected.not_to allow_value(first_name).for(:first_name) }
@@ -82,15 +83,15 @@ RSpec.describe User, type: :model do
     it 'creates normal  user with valid attributes' do
       expect(create(:user).user?).to be_truthy
     end
-  describe 'user association' do
-    it { is_expected.to have_many(:advertisements) }
-  end
+    describe 'user association' do
+      it { is_expected.to have_many(:advertisements) }
+    end
     it ' expects user  with wrong format email to be invalid' do
       expect(build(:user, email: 'email@g')).to_not be_valid
     end
     it 'it should not allow user with wrong format email to be created' do
-      user = build(:user, email: 'email@g')  
-      user.save 
+      user = build(:user, email: 'email@g')
+      user.save
       expect(user.errors.messages[:email]).to_not be_blank
     end
     it 'sends a confirmation email' do
@@ -99,48 +100,48 @@ RSpec.describe User, type: :model do
     end
     it 'it should not allow user with exist email to be created' do
       create(:user, email: 'janedoe@example.com')
-      user = build(:user, email: 'JANEDOE@example.com')  
-      user.save     
+      user = build(:user, email: 'JANEDOE@example.com')
+      user.save
       expect(user.errors.messages[:email]).to eq ['has already been taken']
     end
     it 'it should not allow user with weak password to be created' do
       pass_error = 'Atleast 8 characters, 1 lower-case,1 upcase,1 symbol and a digit'
-      user = build(:user, password: 'password1.', password_confirmation: 'password1.')  
-      user.save      
+      user = build(:user, password: 'password1.', password_confirmation: 'password1.')
+      user.save
       expect(user.errors.messages[:password]).to eq [pass_error]
     end
-    it 'it should not allow user with mistaching passwords to be created' do      
-      user = build(:user, password: 'Vertrong.23', password_confirmation: 'PAword12!')  
-      user.save     
+    it 'it should not allow user with mistaching passwords to be created' do
+      user = build(:user, password: 'Vertrong.23', password_confirmation: 'PAword12!')
+      user.save
       expect(user.errors.messages[:password_confirmation]).to eq ["doesn't match Password"]
     end
-    it 'it should not allow user with first name with numeric to be created' do      
-      user = build(:user, first_name: 'rubo1cop')  
-      user.save         
+    it 'it should not allow user with first name with numeric to be created' do
+      user = build(:user, first_name: 'rubo1cop')
+      user.save
       expect(user.errors.messages[:first_name]).to eq ['format is invalid']
     end
-    it 'it should not allow user with first name of length greater than 30 to be created' do      
-      user = build(:user, first_name: 'rubo1cop' * 8)  
-      user.save      
+    it 'it should not allow user with first name of length greater than 30 to be created' do
+      user = build(:user, first_name: 'rubo1cop' * 8)
+      user.save
       expect(user.errors.messages[:first_name]).to eq ['format is invalid']
     end
-    it 'it should not allow user with last name with numeric to be created' do      
-      user = build(:user, last_name: 'rubo1cop')  
-      user.save         
+    it 'it should not allow user with last name with numeric to be created' do
+      user = build(:user, last_name: 'rubo1cop')
+      user.save
       expect(user.errors.messages[:last_name]).to eq ['format is invalid']
     end
-    it 'it should not allow user with last name of length greater than 30 to be created' do      
-      user = build(:user, last_name: 'rubo1cop' * 8)  
-      user.save    
+    it 'it should not allow user with last name of length greater than 30 to be created' do
+      user = build(:user, last_name: 'rubo1cop' * 8)
+      user.save
       expect(user.errors.messages[:last_name]).to eq ['format is invalid']
     end
-    it 'display one error at time' do      
-      user = build(:user, first_name: '')  
-      user.save  
-      expect(user.errors.messages[:first_name]).to eq ["can't be blank"]   
+    it 'display one error at time' do
+      user = build(:user, first_name: '')
+      user.save
+      expect(user.errors.messages[:first_name]).to eq ["can't be blank"]
       expect(user.errors.messages[:first_name]).not_to eq ["can't be blank", 'format is invalid']
     end
-    it 'creates user with default role as normal' do      
+    it 'creates user with default role as normal' do
       expect(create(:admin).admin?).to be_truthy
     end
   end

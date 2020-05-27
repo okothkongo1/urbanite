@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe Advertisement, type: :model do
@@ -43,7 +44,7 @@ RSpec.describe Advertisement, type: :model do
       expect(advertisement.errors.messages[:location]).to eq ["can't be blank"]
     end
     it 'it should not allow advert with long location to be created' do
-      advertisement = build(:valid_advertisement, location: 'Kingston'*4)
+      advertisement = build(:valid_advertisement, location: 'Kingston' * 4)
       advertisement.save
       expect(advertisement.errors.messages[:location]).to eq length_error
     end
@@ -53,7 +54,7 @@ RSpec.describe Advertisement, type: :model do
       expect(advertisement.errors.messages[:category]).to eq ["can't be blank"]
     end
     it 'it should not allow advert with long category to be created' do
-      advertisement = build(:valid_advertisement, category: 'Electronics'*4)
+      advertisement = build(:valid_advertisement, category: 'Electronics' * 4)
       advertisement.save
       expect(advertisement.errors.messages[:category]).to eq length_error
     end
@@ -63,7 +64,7 @@ RSpec.describe Advertisement, type: :model do
       expect(advertisement.errors.messages[:advert_type]).to eq ["can't be blank"]
     end
     it 'it should not allow advert with long advert_type to be created' do
-      advertisement = build(:valid_advertisement, advert_type: 'Computer'*4)
+      advertisement = build(:valid_advertisement, advert_type: 'Computer' * 4)
       advertisement.save
       expect(advertisement.errors.messages[:advert_type]).to eq length_error
     end
@@ -98,9 +99,9 @@ RSpec.describe Advertisement, type: :model do
     it 'it should not allow advert with more 5 images to be saved ' do
       advertisement = build(:advertisement)
       6.times do
-       advertisement.images.attach(io: File.open(
-         Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg')),
-         filename: 'galaxyj7star.jpg', content_type: 'image/jpg')
+        advertisement.images.attach(io: File.open(
+          Rails.root.join('spec/support/assets/advertisements/galaxyj7star.jpg')),
+          filename: 'galaxyj7star.jpg', content_type: 'image/jpg')
       end
       advertisement.save
       expect(advertisement).to_not be_valid
