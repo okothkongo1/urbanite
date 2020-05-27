@@ -45,7 +45,6 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.9'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'shoulda-matchers', '~> 4.3'
-  gem 'cucumber-rails', require: false
   gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
   gem 'factory_bot_rails', '~> 5.2'
   gem 'rubocop', '~> 0.84.0', require: false
