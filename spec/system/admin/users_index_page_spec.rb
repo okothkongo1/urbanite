@@ -10,7 +10,7 @@ RSpec.describe 'User Index Page', type: :feature do
   scenario 'user logged in  but not admin' do
     login_as user
     visit admin_users_path
-    expect(current_path).to eq  root_path 
+    expect(current_path).to eq  root_path
   end
   scenario 'user logged as admin' do
     user

@@ -7,7 +7,7 @@ module UsersHelper
   private
   def admin?
     if current_user
-    current_user.admin?
+      current_user.admin?
     else
       false
     end
