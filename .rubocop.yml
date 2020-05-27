@@ -9,8 +9,6 @@ AllCops:
   Exclude:
     - 'spec/spec_helper.rb'
     - 'spec/rails_helper.rb'
-    - 'lib/tasks/cucumber.rake'
-    - 'features/support/env.rb'
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
