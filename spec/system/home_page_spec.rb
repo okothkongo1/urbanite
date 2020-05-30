@@ -5,6 +5,6 @@ RSpec.describe 'HomePage', type: :feature do
 
   it 'shows adverts on the homepage' do
     visit root_path
-    expect(page).to have_content 'Available Adverts'
+    expect(page).to have_selector('.material-icons')
   end
 end
