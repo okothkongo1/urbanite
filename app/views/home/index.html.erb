@@ -1,33 +1,33 @@
 <div class="row">
   <div class="col s2">
-    <div class="container">      
+    <div class="container">
       <%categories.each do|category,icon|%>
-        <div class="row">
-          <%= link_to root_path do %>
-            <span class="material-icons"><%=icon%></span>
-              <p><%=category%></p>
-          <%end%>
-        </div>
-      <%end%>      
+      <div class="row">
+        <%= link_to root_path do %>
+        <span class="material-icons"><%=icon%></span>
+        <p><%=category%></p>
+        <%end%>
+      </div>
+      <%end%>
     </div>
   </div>
   <div class="col s10">
     <div class="card">
-      <%place_holder_helper.each do|_holder|%>
-        <%= link_to "#" do %>
-          <div class="col s3">
-            <div class="card">
-              <div class="card-image">
-                <img class="activator" src="https://picsum.photos/id/1/200/300">
-              </div>
-              <div class="card-content">
-                <p>This is the dummy </a></p>
-              </div>
-            </div>
+      <%@advertisements.each do|advert|%>
+      <%= link_to "#" do %>
+      <div class="col s3">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag(single_image(advert))%>
           </div>
-        <%end%>
+          <div class="card-content">
+            <p><%=advert.model%></p>
+            <p><%=advert.price%></p>
+          </div>
+        </div>
+      </div>
+      <%end%>
       <%end%>
     </div>
   </div>
 </div>
-

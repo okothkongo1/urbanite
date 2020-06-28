@@ -10,8 +10,8 @@ module HomeHelper
        'Mobile&Tablets': 'smartphone'
     }
   end
-  def place_holder_helper
-    (1..12).to_a
+  def single_image(advert)
+    advert.images.first
   end
 
 end
